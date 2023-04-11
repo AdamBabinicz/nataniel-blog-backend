@@ -37,8 +37,7 @@ app.use(
 // Cors Policy
 app.use(
   cors({
-    // origin: "http://localhost:3000",
-    origin: "https://natanek-blog.onrender.com",
+    origin: "http://localhost:3000",
   })
 );
 
