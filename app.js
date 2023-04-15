@@ -38,7 +38,7 @@ app.use(
 app.use(
   cors({
     // origin: "http://localhost:3000",
-    origin: "https://harmonious-arithmetic-ba28a2.netlify.app",
+    origin: "https://blog-nataniel.netlify.app",
   })
 );
 
