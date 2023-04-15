@@ -38,7 +38,7 @@ app.use(
 app.use(
   cors({
     // origin: "http://localhost:3000",
-    origin: "https://blog-nataniel.netlify.app",
+    origin: "blog-nataniel.netlify.app",
   })
 );
 
