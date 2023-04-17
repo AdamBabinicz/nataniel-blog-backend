@@ -35,18 +35,18 @@ app.use(
 );
 
 // Cors Policy
-app.use(
-  cors({
-    allowedHeaders: "*",
-    allowedMethods: "*",
-    origin: "*",
-  })
-);
 // app.use(
 //   cors({
-//     origin: "https://blog-nataniel.netlify.app",
+//     allowedHeaders: "*",
+//     allowedMethods: "*",
+//     origin: "*",
 //   })
 // );
+app.use(
+  cors({
+    origin: "https://nat-blog.onrender.com",
+  })
+);
 // Routes
 app.use("/api/auth", require("./routes/authRoute"));
 app.use("/api/users", require("./routes/usersRoute"));
