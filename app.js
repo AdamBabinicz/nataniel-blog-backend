@@ -45,7 +45,7 @@ app.use(
 app.use(
   cors({
     // origin: "http://localhost:3000",
-    origin: "https://natanek.onrender.com",
+    origin: "https://blog-nataniel.netlify.app",
   })
 );
 // Routes
