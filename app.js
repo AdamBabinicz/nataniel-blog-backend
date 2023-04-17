@@ -44,7 +44,7 @@ app.use(
 // );
 app.use(
   cors({
-    origin: "https://nat-blog.onrender.com",
+    origin: "http://localhost:3000",
   })
 );
 // Routes
