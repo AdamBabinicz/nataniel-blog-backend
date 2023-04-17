@@ -37,10 +37,16 @@ app.use(
 // Cors Policy
 app.use(
   cors({
-    // origin: "http://localhost:3000",
-    origin: "https://blog-nataniel.netlify.app",
+    allowedHeaders: "*",
+    allowedMethods: "*",
+    origin: "*",
   })
 );
+// app.use(
+//   cors({
+//     origin: "https://blog-nataniel.netlify.app",
+//   })
+// );
 // Routes
 app.use("/api/auth", require("./routes/authRoute"));
 app.use("/api/users", require("./routes/usersRoute"));
