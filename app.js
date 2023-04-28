@@ -45,6 +45,8 @@ app.use(
 app.use(
   cors({
     // origin: "http://localhost:3000",
+    allowedHeaders: "*",
+    allowedMethods: "*",
     origin: "https://blog-nataniel.netlify.app",
   })
 );
