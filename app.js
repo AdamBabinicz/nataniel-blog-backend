@@ -47,7 +47,8 @@ app.use(
     // origin: "http://localhost:3000",
     allowedHeaders: "*",
     allowedMethods: "*",
-    origin: "https://blog-nataniel.netlify.app",
+    // origin: "https://blog-nataniel.netlify.app",
+    origin: "https://nataniel-front.onrender.com",
   })
 );
 // Routes
