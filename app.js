@@ -48,7 +48,7 @@ app.use(
     allowedHeaders: "*",
     allowedMethods: "*",
     // origin: "https://blog-nataniel.netlify.app", // frontend netlify
-    origin: "https://nataniel-front.onrender.com",
+    origin: "https://nataniel.onrender.com",
   })
 );
 // Routes
