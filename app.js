@@ -8,6 +8,8 @@ const { errorHandler, notFound } = require("./middlewares/error");
 const cors = require("cors");
 require("dotenv").config();
 
+const path = require("path");
+
 // Connection To Db
 connectToDb();
 
@@ -58,6 +60,12 @@ app.use("/api/posts", require("./routes/postsRoute"));
 app.use("/api/comments", require("./routes/commentsRoute"));
 app.use("/api/categories", require("./routes/categoriesRoute"));
 app.use("/api/password", require("./routes/passwordRoute"));
+
+// static files
+app.use(express.static(path.join(__dirname, "./frontend/build")));
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
+});
 
 // Error Handler Middleware
 app.use(notFound);
