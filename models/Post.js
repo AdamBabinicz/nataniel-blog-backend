@@ -26,11 +26,16 @@ const PostSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    image: {
-      type: Object,
+    media: {
+      type: {
+        url: String,
+        publicId: String,
+        contentType: String, // Dodane dla identyfikacji typu (image/video)
+      },
       default: {
         url: "",
         publicId: null,
+        contentType: "",
       },
     },
     likes: [
@@ -39,6 +44,16 @@ const PostSchema = new mongoose.Schema(
         ref: "User",
       },
     ],
+    video: {
+      type: {
+        url: String,
+        publicId: String,
+      },
+      default: {
+        url: "",
+        publicId: null,
+      },
+    },
   },
   {
     timestamps: true,
@@ -63,6 +78,11 @@ function validateCreatePost(obj) {
     title: Joi.string().trim().min(2).max(200).required(),
     description: Joi.string().trim().min(10).required(),
     category: Joi.string().trim().required(),
+    // Dodano walidację dla pola video
+    video: Joi.object({
+      url: Joi.string(),
+      publicId: Joi.string(),
+    }),
   });
   return schema.validate(obj);
 }
@@ -73,6 +93,11 @@ function validateUpdatePost(obj) {
     title: Joi.string().trim().min(2).max(200),
     description: Joi.string().trim().min(10),
     category: Joi.string().trim(),
+    // Dodano walidację dla pola video
+    video: Joi.object({
+      url: Joi.string(),
+      publicId: Joi.string(),
+    }),
   });
   return schema.validate(obj);
 }

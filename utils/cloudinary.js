@@ -6,11 +6,11 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Cloudinary Upload Image
-const cloudinaryUploadImage = async (fileToUpload) => {
+// Cloudinary Upload File
+const cloudinaryUploadFile = async (fileToUpload) => {
   try {
     const data = await cloudinary.uploader.upload(fileToUpload, {
-      resource_type: "auto",
+      resource_type: "video", // Zmiana na "video" dla plików wideo
     });
     return data;
   } catch (error) {
@@ -19,10 +19,10 @@ const cloudinaryUploadImage = async (fileToUpload) => {
   }
 };
 
-// Cloudinary Remove Image
-const cloudinaryRemoveImage = async (imagePublicId) => {
+// Cloudinary Remove File
+const cloudinaryRemoveFile = async (filePublicId) => {
   try {
-    const result = await cloudinary.uploader.destroy(imagePublicId);
+    const result = await cloudinary.uploader.destroy(filePublicId);
     return result;
   } catch (error) {
     console.log(error);
@@ -30,8 +30,8 @@ const cloudinaryRemoveImage = async (imagePublicId) => {
   }
 };
 
-// Cloudinary Remove Multiple Image
-const cloudinaryRemoveMultipleImage = async (publicIds) => {
+// Cloudinary Remove Multiple Files
+const cloudinaryRemoveMultipleFiles = async (publicIds) => {
   try {
     const result = await cloudinary.v2.api.delete_resources(publicIds);
     return result;
@@ -42,7 +42,7 @@ const cloudinaryRemoveMultipleImage = async (publicIds) => {
 };
 
 module.exports = {
-  cloudinaryUploadImage,
-  cloudinaryRemoveImage,
-  cloudinaryRemoveMultipleImage,
+  cloudinaryUploadFile, // Zmiana nazwy funkcji na bardziej ogólną, obsługującą różne typy plików
+  cloudinaryRemoveFile,
+  cloudinaryRemoveMultipleFiles,
 };
