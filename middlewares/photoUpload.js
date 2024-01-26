@@ -1,15 +1,10 @@
 const path = require("path");
 const multer = require("multer");
 
-// Storage for Photos and Videos
-const storage = multer.diskStorage({
+//Photo Storage
+const photoStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    // Ustal, czy plik to zdjęcie czy wideo i zapisz w odpowiednim folderze
-    const uploadPath = file.mimetype.startsWith("image")
-      ? path.join(__dirname, "../images")
-      : path.join(__dirname, "../videos");
-
-    cb(null, uploadPath);
+    cb(null, path.join(__dirname, "../images"));
   },
   filename: function (req, file, cb) {
     if (file) {
@@ -20,21 +15,17 @@ const storage = multer.diskStorage({
   },
 });
 
-// Upload Middleware for Photos and Videos
-const upload = multer({
-  storage: storage,
+//Photo Upload Middleware
+const photoUpload = multer({
+  storage: photoStorage,
   fileFilter: function (req, file, cb) {
-    // Akceptuj pliki obrazów i wideo
-    if (
-      file.mimetype.startsWith("image") ||
-      file.mimetype.startsWith("video")
-    ) {
+    if (file.mimetype.startsWith("image")) {
       cb(null, true);
     } else {
       cb({ message: "Unsupported file format" }, false);
     }
   },
-  limits: { fileSize: 1024 * 1024 }, // 1 megabyte
+  limits: { fileSize: 1024 * 1024 }, //1 megabyte
 });
 
-module.exports = upload;
+module.exports = photoUpload;
